@@ -7,12 +7,12 @@
       'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
 -->
 
-<!ENTITY I-D.nsdt-teas-transport-slice-definition PUBLIC ''
-      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-transport-slice-definition.xml'>
+<!ENTITY I-D.nsdt-teas-ietf-network-slice-definition PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-ietf-network-slice-definition.xml'>
 <!ENTITY I-D.nsdt-teas-ns-framework PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-ns-framework.xml'>
-<!ENTITY I-D.wd-teas-transport-slice-yang PUBLIC ''
-      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.wd-teas-transport-slice-yang.xml'>
+<!ENTITY I-D.wd-teas-ietf-network-slice-nbi-yang PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.wd-teas-ietf-network-slice-nbi-yang.xml'>
 <!ENTITY I-D.liu-teas-transport-network-slice-yang PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.liu-teas-transport-network-slice-yang.xml'>
 
@@ -65,7 +65,25 @@
       </address>
     </author>
 
-    <author fullname="Jeff Tantsura"
+   <author fullname="Reza Rokui"
+            initials="R."
+            surname="Rokui">
+      <organization abbrev="Nokia">
+        Nokia
+      </organization>
+      <address>
+        <postal>
+          <street></street>
+          <street></street>
+          <city></city>
+          <code></code>
+          <country>Canada</country>
+        </postal>
+        <email>reza.rokui@nokia.com</email>
+       </address>
+    </author>
+
+<author fullname="Jeff Tantsura"
             initials="J.T."
             surname="Tantsura">
       <organization abbrev="Apstra">
@@ -73,54 +91,90 @@
       </organization>
       <address>
         <postal>
-          <street>tbc</street>
-          <street>tbc</street>
-          <city>tbc</city>
-          <code>tbc</code>
+          <street></street>
+          <street></street>
+          <city></city>
+          <code></code>
           <country>USA</country>
         </postal>
         <email>jefftant.ietf@gmail</email>
        </address>
     </author>
 
-   <author fullname="BBB"
+   <author fullname="Bo Wu"
             initials="B."
-            surname="BBB">
-      <organization abbrev="BBB">
-        BBB
+            surname="Wu">
+      <organization abbrev="Huawei">
+        Huawei Technologies
       </organization>
       <address>
         <postal>
-          <street>tbc</street>
-          <street>tbc</street>
-          <city>tbc</city>
-          <code>tbc</code>
-          <country>TBC</country>
+          <street>101 Software Avenue, Yuhua District</street>
+          <street></street>
+          <city>Nanjing, Jiangsu</city>
+          <code>210012</code>
+          <country>China</country>
         </postal>
-        <email>bbb@gmail.com</email>
+        <email>lana.wubo@huawei.com</email>
        </address>
     </author>
 
-   <author fullname="CCC"
-            initials="C."
-            surname="CCC">
-      <organization abbrev="CCC">
-        CCC
+    <author fullname="Xufeng Liu"
+            initials="X."
+            surname="Liu">
+      <organization abbrev="Volta">
+        Volta Networks
       </organization>
       <address>
         <postal>
-          <street>tbc</street>
-          <street>tbc</street>
-          <city>tbc</city>
-          <code>tbc</code>
-          <country>TBC</country>
+          <street></street>
+          <street></street>
+          <city></city>
+          <code></code>
+          <country></country>
         </postal>
-        <email>ccc@gmail.com</email>
+        <email>xufeng.liu.ietf@gmail.com</email>
        </address>
     </author>
 
+    <author fullname="Dhruv Dhody"
+            initials="D."
+            surname="Dhody">
+      <organization abbrev="Huawei">
+        Huawei Technologies
+      </organization>
+      <address>
+        <postal>
+          <street>Divyashree Techno Park</street>
+          <street></street>
+          <city>Bangalore, Karnataka</city>
+          <code>560066</code>
+          <country>India</country>
+        </postal>
+        <email>dhruv.ietf@gmail.com</email>
+       </address>
+    </author>
 
-    <date month="October" year="2020" />
+    <author fullname="Sergio Beelloti"
+            initials="S."
+            surname="Belloti">
+      <organization abbrev="Nokia">
+        Nokia
+      </organization>
+      <address>
+        <postal>
+          <street></street>
+          <street></street>
+          <city></city>
+          <code></code>
+          <country></country>
+        </postal>
+        <email>sergio.belotti@nokia.com</email>
+       </address>
+    </author>
+	  
+
+    <date month="November" year="2020" />
 
     <area>Internet</area>
 
@@ -129,9 +183,9 @@
     <abstract>
 
     <t>
-TODO - add co-authors.
-To be completed.
-   </t>
+This document describes the major functional components of an IETF Network Slice Controller (NSC) as well as references the data 
+models required for supporting the requests of IETF network slices and their realization.
+    </t>
 
     </abstract>
 
@@ -144,7 +198,7 @@ To be completed.
 
     <t>
 Editor’s Note: the terminology in this draft will be aligned with the final terminology selected for describing the notion of IETF Network Slice when applied 
-to IETF technologies, which is currently under discussion. By now same terminology as used in <xref target="I-D.nsdt-teas-transport-slice-definition"/> 
+to IETF technologies, which is currently under discussion. By now same terminology as used in <xref target="I-D.nsdt-teas-ietf-network-slice-definition"/> 
 and <xref target="I-D.nsdt-teas-ns-framework"/> is primarily used here. Consensus to use "IETF Network Slice" term has been reached.
    </t>
 
@@ -160,7 +214,7 @@ realized by any of the IETF technologies, emerges as complementary but essential
 
     <t>
 In order to facilitate the request, realization and lifecycle control and management of a transport slice, a new element named IETF Network Slice Controller 
-(NSC) is being proposed in <xref target="I-D.nsdt-teas-transport-slice-definition"/> and <xref target="I-D.nsdt-teas-ns-framework"/>.
+(NSC) is being proposed in <xref target="I-D.nsdt-teas-ietf-network-slice-definition"/> and <xref target="I-D.nsdt-teas-ns-framework"/>.
    </t>
 
     <t>
@@ -240,7 +294,7 @@ both in order to ensure alignment.
    </t>
 
    <t>
-Currently there are two different models proposed, on for each of the categories above. The model in <xref target="I-D.wd-teas-transport-slice-yang"/> fits into the customer view, 
+Currently there are two different models proposed, on for each of the categories above. The model in <xref target="I-D.wd-teas-ietf-network-slice-nbi-yang"/> fits into the customer view, 
 while the model defined in <xref target="I-D.liu-teas-transport-network-slice-yang"/> fits in to the provider view.
    </t>
 
@@ -262,11 +316,13 @@ are both out of the scope of this document.
 
     <t>
 The NSC should work with both data models. The NSC takes first the customer’s view by analyzing the needs of the customer, processing such 
-requests taking into account the overall view of the network and the IETF Network Slices already instantiated, normalizing its instantiation across different technologies, and finally generates the provider view.
+requests taking into account the overall view of the network and the IETF Network Slices already instantiated, normalizing its instantiation 
+across different technologies, and finally generates the provider view.
    </t>
 
     <t>
-Once the new request is processed and declared as feasible, the NSC triggers its realization by interacting with the Network Controllers and communicates back to the higher level controller to start the billing cycle.
+Once the new request is processed and declared as feasible, the NSC triggers its realization by interacting with the Network Controllers and communicates back 
+to the higher level controller to start the billing cycle.
     </t>
 
     <t>
@@ -294,7 +350,7 @@ the proper technologies for realizing the IETF Network Slice and triggers its re
       <t>
           <list style="symbols">
             <t> 
-(a) -> customer’s view, e.g. <xref target="I-D.wd-teas-transport-slice-yang"/>.
+(a) -> customer’s view, e.g. <xref target="I-D.wd-teas-ietf-network-slice-nbi-yang"/>.
             </t>
 
             <t> 
@@ -378,9 +434,9 @@ This draft does not include any IANA considerations
 
     <references title="References">
 
-      &I-D.nsdt-teas-transport-slice-definition;
+      &I-D.nsdt-teas-ietf-network-slice-definition;
       &I-D.nsdt-teas-ns-framework;
-      &I-D.wd-teas-transport-slice-yang;
+      &I-D.wd-teas-ietf-network-slice-nbi-yang;
       &I-D.liu-teas-transport-network-slice-yang;
 
 <!--
