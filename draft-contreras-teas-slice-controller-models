@@ -367,37 +367,40 @@ the proper technologies for realizing the IETF Network Slice and triggers its re
        <figure anchor="fig_structure" title="IETF Network Slice Controller structure and asspociated data models">
           <artwork align="center">
 		<![CDATA[
-                               Higher Level System 
-		                        |
-			                |
-			   ---------------------------
-			   | NSC        | (a)        |
-			   |            v            |
-			   |   -------------------   |
-			   |   |                 |   |
-			   |   |    NS Mapper    |   |
-			   |   |                 |   |
-			   |   -------------------   |
-			   |            | (b)        |
-			   |            v            |
-			   |   -------------------   |
-			   |   |                 |   |
-			   |   |    NS Realizer  |   |
-                           |   |                 |   |
-			   |   -------------------   |
-			   |            | (c)        |
-			   ---------------------------
-			                |
-			                v
-			        Network Controllers
+                         Higher Level System 
+		                  |
+	                          |
+		     ---------------------------
+		     | NSC        | (a)        |
+		     |            v            |
+		     |   -------------------   |
+		     |   |                 |   |
+		     |   |    NS Mapper    |   |
+		     |   |                 |   |
+		     |   -------------------   |
+		     |            | (b)        |
+		     |            v            |
+		     |   -------------------   |
+		     |   |                 |   |
+		     |   |    NS Realizer  |   |
+                     |   |                 |   |
+		     |   -------------------   |
+		     |            | (c)        |
+		     ---------------------------
+		                  |
+		                  v
+		          Network Controllers
 
     ]]></artwork>
         </figure>
 
     <t>
 TODO - Breakdown “NS mapper” and “NS Realizer” to their logical components.
+    </t>
+    <t>
 TODO - Add complementarity of the models for satisfying Type 1 and Type 2 Services as per RFC8453.
     </t>
+
 	    
 </section>
 
