@@ -7,6 +7,9 @@
       'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
 -->
 
+<!ENTITY rfc8453 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.8453.xml'>
+
 <!ENTITY I-D.nsdt-teas-ietf-network-slice-definition PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-ietf-network-slice-definition.xml'>
 <!ENTITY I-D.nsdt-teas-ns-framework PUBLIC ''
@@ -15,6 +18,8 @@
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.wd-teas-ietf-network-slice-nbi-yang.xml'>
 <!ENTITY I-D.liu-teas-transport-network-slice-yang PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.liu-teas-transport-network-slice-yang.xml'>
+<!ENTITY I-D.ietf-teas-actn-yang PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-teas-actn-yang.xml'>
 
 <!--
      <!ENTITY rfc4605 PUBLIC ''
@@ -155,7 +160,7 @@
        </address>
     </author>
 
-    <author fullname="Sergio Beelloti"
+    <author fullname="Sergio Belloti"
             initials="S."
             surname="Belloti">
       <organization abbrev="Nokia">
@@ -367,38 +372,58 @@ the proper technologies for realizing the IETF Network Slice and triggers its re
        <figure anchor="fig_structure" title="IETF Network Slice Controller structure and asspociated data models">
           <artwork align="center">
 		<![CDATA[
-                         Higher Level System 
-		                  |
-	                          |
-		     ---------------------------
-		     | NSC        | (a)        |
-		     |            v            |
-		     |   -------------------   |
-		     |   |                 |   |
-		     |   |    NS Mapper    |   |
-		     |   |                 |   |
-		     |   -------------------   |
-		     |            | (b)        |
-		     |            v            |
-		     |   -------------------   |
-		     |   |                 |   |
-		     |   |    NS Realizer  |   |
-                     |   |                 |   |
-		     |   -------------------   |
-		     |            | (c)        |
-		     ---------------------------
-		                  |
-		                  v
-		          Network Controllers
-
+                    Higher Level System 
+                             |
+                             |
+                ---------------------------
+                | NSC        | (a)        |
+                |            v            |
+		|   -------------------   |
+		|   |                 |   |
+		|   |    NS Mapper    |   |
+		|   |                 |   |
+		|   -------------------   |
+		|            | (b)        |
+		|            v            |
+		|   -------------------   |
+		|   |                 |   |
+		|   |    NS Realizer  |   |
+                |   |                 |   |
+		|   -------------------   |
+		|            | (c)        |
+		---------------------------
+		             |
+		             v
+		    Network Controllers
     ]]></artwork>
         </figure>
 
     <t>
-TODO - Breakdown “NS mapper” and “NS Realizer” to their logical components.
+TODO item #1 - Breakdown “NS mapper” and “NS Realizer” to their logical components.
     </t>
     <t>
-TODO - Add complementarity of the models for satisfying Type 1 and Type 2 Services as per RFC8453.
+TODO item #2- Add complementarity of the models for satisfying Type 1 and Type 2 Services as per <xref target="RFC8453"/>. Discussion: equivalent to the Virtual 
+Network (VN) described in <xref target="RFC8453"/>, there are two views of an IETF network slices as well:
+    </t>
+	      <t>
+          <list style="symbols">
+            <t> 
+The IETF network slice can be abstracted as a set of edge-to-edge links (Type 1).
+            </t>
+
+            <t> 
+The IETF network slice can be abstracted as a topology of virtual nodes and virtual links (Type 2) which represent the partitioning of underlay network 
+resources for use by network slice connectivity.
+            </t>
+
+          </list>
+      </t>
+
+    <t>
+The use cases of these two types of networks are further described by <xref target="RFC8453"/>. <xref target="I-D.wd-teas-ietf-network-slice-nbi-yang"/> models the Type 1 service, 
+while <xref target="I-D.liu-teas-transport-network-slice-yang"/> models the Type 2 service. When a customer intends to request a Type 2 service, 
+<xref target="I-D.liu-teas-transport-network-slice-yang"/> can also be used at the point (a) in Figure 2. As an example, when ACTN is used to realize an IETF network slice, 
+model mappings are described in more details in <xref target="I-D.ietf-teas-actn-yang"/>.
     </t>
 
 	    
@@ -437,10 +462,12 @@ This draft does not include any IANA considerations
 
     <references title="References">
 
+      &rfc8453;
       &I-D.nsdt-teas-ietf-network-slice-definition;
       &I-D.nsdt-teas-ns-framework;
       &I-D.wd-teas-ietf-network-slice-nbi-yang;
       &I-D.liu-teas-transport-network-slice-yang;
+      &I-D.ietf-teas-actn-yang;
 
 <!--
 
