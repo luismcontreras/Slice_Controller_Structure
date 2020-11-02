@@ -44,7 +44,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="info" docName="draft-contreras-teas-network-slice-controller-models-00"
+<rfc category="info" docName="draft-contreras-teas-slice-controller-models-00"
      ipr="trust200902">
   <front>
       <title abbrev="Slice Controller and its data models">
@@ -102,7 +102,7 @@
           <code></code>
           <country>USA</country>
         </postal>
-        <email>jefftant.ietf@gmail</email>
+        <email>jefftant.ietf@gmail.com</email>
        </address>
     </author>
 
