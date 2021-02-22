@@ -9,6 +9,10 @@
 
 <!ENTITY rfc8453 PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml/reference.RFC.8453.xml'>
+<!ENTITY rfc8309 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.8309.xml'>
+<!ENTITY rfc8969 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.8969.xml'>
 
 <!ENTITY I-D.nsdt-teas-ietf-network-slice-definition PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-ietf-network-slice-definition.xml'>
@@ -44,7 +48,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="info" docName="draft-contreras-teas-slice-controller-models-00"
+<rfc category="info" docName="draft-contreras-teas-slice-controller-models-01"
      ipr="trust200902">
   <front>
       <title abbrev="Slice Controller and its data models">
@@ -179,7 +183,7 @@
     </author>
 	  
 
-    <date month="November" year="2020" />
+    <date month="February" year="2021" />
 
     <area>Internet</area>
 
@@ -315,7 +319,7 @@ are both out of the scope of this document.
 <!-- End of Section 2. Slice data models -->
 
 
-<!-- Section 3. Structure of the Transport Slice Controller -->
+<!-- Section 3. Structure of the IETF Network Slice Controller -->
 
 <section title="Structure of the IETF Network Slice Controller (NSC)">
 
@@ -399,11 +403,7 @@ the proper technologies for realizing the IETF Network Slice and triggers its re
         </figure>
 
     <t>
-TODO item #1 - Breakdown “NS mapper” and “NS Realizer” to their logical components.
-    </t>
-    <t>
-TODO item #2- Add complementarity of the models for satisfying Type 1 and Type 2 Services as per <xref target="RFC8453"/>. Discussion: equivalent to the Virtual 
-Network (VN) described in <xref target="RFC8453"/>, there are two views of an IETF network slices as well:
+IETF Network Slices with different level of detail could be requested:
     </t>
 	      <t>
           <list style="symbols">
@@ -426,11 +426,63 @@ while <xref target="I-D.liu-teas-transport-network-slice-yang"/> models the Type
 model mappings are described in more details in <xref target="I-D.ietf-teas-actn-yang"/>.
     </t>
 
+	
+    <section anchor="Mapper" title="NS Mapper">
+      <t>
+The Mapper will receive the IETF Network Slice request from the customer. It will process it obtaining an overall view of how this new request complements or
+fits with the rest of IETF Network Slices, if any, as provisioned in the network. As part of that processing, a single customer IETF Network Slice request could 
+result in the need of actually provisioning different IETF Network Slices in the network. The Mapper will maintain the relationship among customer IETF Network 
+Slice request and provisioned IETF Network Slices.
+      </t>
+    </section>
+
+    <section anchor="Realizer" title="NS Realizer">
+      <t>
+The Realizer will receive from the Mapper one or more requests for provision of IETF Network Slices, potentially including some technology-specific information. 
+With that information, the Realizer will determine the realization of each particular IETF Network Slice interacting with technology-specific Network Controllers.
+      </t>
+    </section>
+
 	    
 </section>
 
-<!-- End of Section 3. Interconnection intents -->
+<!-- End of Section 3. Structure of the IETF Network Slice Controller -->
 
+<!-- Section 4. Model types in IETF Network Slice Controller interfaces  -->
+     <section anchor="Models" title="Model types in IETF Network Slice Controller interfaces">
+
+       <t>
+Both <xref target="RFC8309"/> and <xref target="RFC8969"/> offer a complete view of customer, service and network model types. In this sense a potential
+mapping of models to IETF Network Slcie Controller interfaces is as follows:
+      </t>
+
+	     	      <t>
+          <list style="symbols">
+            <t> 
+NBI of the IETF NSC (interface (a) in Figure 2) -> Customer service model. According to <xref target="RFC8309"/> “a customer's service request is (or should be)
+technology agnostic. That is, a customer is unaware of the technology that the network operator has available to deliver the service, so the customer does not make 
+requests specific to the underlying technology but is limited to making requests specific to the service that is to be delivered”. This definition matches the 
+expected behavior of the IETF NSC NBI as considered in in <xref target="I-D.nsdt-teas-ietf-network-slice-definition"/> and <xref target="I-D.nsdt-teas-ns-framework"/>. 
+            </t>
+
+            <t> 
+Interface between NS Mapper and NS Realizer (interface (b) in Figure 2) -> Service Delivery model. According to <xref target="RFC8309"/> "a service delivery module is
+expressed as a core set of parameters that are common across a network type and technology […] Service delivery modules include technology-specific modules.”. Furthermore,
+<xref target="RFC8969"/> (in its Figures 3 and 5) considers L3SM or VN Service models to be later on fed into a controller. 
+            </t>
+
+            <t> 
+SBI of the IETF NSC (interface (c) in Figure 2) -> Network Configuration model. According to <xref target="RFC8309"/> “the orchestrator must map the service request to its 
+view, and this mapping may include a choice of which networks and technologies to use depending on which service features have been requested”. This is coincideent with the 
+expected behavior of the IETF NSC SBI as considered in in <xref target="I-D.nsdt-teas-ietf-network-slice-definition"/> and <xref target="I-D.nsdt-teas-ns-framework"/>.
+            </t>
+
+		  
+          </list>
+      </t>
+   	     
+     </section>
+<!-- end of Section 4. Model types in IETF Network Slice Controller interfaces -->
 
 <!-- Security Considerations -->
      <section anchor="Security" title="Security Considerations">
@@ -463,6 +515,8 @@ This draft does not include any IANA considerations
     <references title="References">
 
       &rfc8453;
+      &rfc8309;
+      &rfc8969;
       &I-D.nsdt-teas-ietf-network-slice-definition;
       &I-D.nsdt-teas-ns-framework;
       &I-D.wd-teas-ietf-network-slice-nbi-yang;
